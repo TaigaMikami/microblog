@@ -2,7 +2,11 @@
 
 {% block body %}
 	<div>
-		<h2>{{ object.content }}</h2>
-		<p>{{ object.posted_date }}</p>
+		<h2>{{ blog.content }}</h2>
+		<p>{{ blog.posted_date }}</p>
 	</div>
+	{% if user.is_authenticated %}
+		<a href="{% url 'update' blog.id %}" class="btn btn-primary">編集</a>
+		<a href="{% url 'delete' blog.id %}" class="btn btn-danger">削除</a>
+	{% endif %}
 {% endblock %}

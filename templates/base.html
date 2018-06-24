@@ -10,7 +10,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Clean Blog</title>
+	<title>Micro Blog</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -54,6 +54,20 @@
 
 <!-- Main Content -->
 <div class="container">
+	{% if messages %}
+		<ul class="list-unstyled">
+		{% for message in messages %}
+			<li {% if message.tags %}
+				class="bg-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %} alert"{% endif %}>
+				{{ message }}
+			<button class="close" type="button" aria-label="Close" data-dismiss="alert">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+
 	{% block body %}
 	{% endblock %}
 </div>

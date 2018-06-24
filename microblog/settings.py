@@ -125,3 +125,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.normpath(os.path.join(BASE_DIR, "assets")),
 )
+
+LOGIN_REDIRECT_URL = '/'
